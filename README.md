@@ -1,6 +1,8 @@
 This folder contains the scripts to reproduce the result in the paper "Multiplexed protein profiling reveals spatial subcellular signaling networks"
 
-From IMC image dataset, we can look at Immune cell expression in health and disease 
+Due to very large dataset size, please contact authors to get access to the data.
+
+<!-- From IMC image dataset, we can look at Immune cell expression in health and disease  -->
 
 <!-- ![Alt text](figures/stats/count_Icell.png)
 
@@ -33,29 +35,27 @@ It is possible to look at the 2D and 3D topographic layer of specific markers su
 
 # Organization
 
-## Data
-"data" folder contains all the necessary data to reproduce the results in the paper:
-- "raw" folder contains all the gray scale image of IMC for each Region of Interest (ROI) for each marker
-- "masks" folder contains all the binary mask from IMC images defined by thresholds 
-- "cell_masks" folder contains all the single cell segmentation for each ROI
-- "clusters" folder contains the anatomical clustering of each ROI 
-
 ## Notebooks 
 "notebooks" folder contains jupyter notebook script used:
-- 01_image_level_clustering is the script for performing KMeans clustering of marker images
-- 02_cluster_representation is the script for generating combined image of mean cluster images
-- 03_marker_stats is the script for generating statistical plot of combination of ROI such as area and expression level 
-- 04_spatial_proximity_plot is the script for plotting spatial proximity for pair of markers from a ROI
-- 05_topographic_map is the script for generating 3D visualization of markers from a ROI
-- 06_stats_plot is the script for generating statistical plot for individual ROI 
-- 07_network_viz is the script for generating network visualization of intra and inter cluster spatial map using NetworkX package 
-- 08_spatial_reference_map is the script for generating network visualization of spatial reference map using NetworkX package 
+- 01_processing is the script for performing image processing step that includes background removal, z-stack best focus selection, multiplex cycle shift registration
+- 02_segmentation is the script for generating segmentation mask using cellpose
+- 03_extract_expression_level is the script used for extract mean intensity and area per cell from cell mask
+- 04_generate_figures is the script used for generating multiplex protein marker images
+- 05_cell_nuclei_intensity_plot is the script used for generating per cell and marker mean intensity variation in the spatial domain
+- 06_HM_marker is the script for generating heatmap plot of marker expression level per cell
+- 07_pixel_clustering is the script for generating pixel level clustering for all marker across field of view
+- 08_correlation_plot is the script used for generating cell level marker intensity correlation
+- 09_prediction is the script used for generating marker intensity prediction between protein markers
+- 10_parallel_clustering_3D is the script for generating pixel level clustering in 3D by selecting multiple z-stack at best focus
+- revision_bleaching is the script for quantifying marker bleaching efficiency by looking at both intensity level difference and fourrier domain analysis 
+- cell_cylce is the script for generating cell cycle information 
+- correlation_bleaching is the script for generating per cell after bleach marker intensity correaltion for validation
+- clustering_benchmark is the script for generating benchmark result for clustering 
+- min_intensity is the script for generating minimum intensity threshold level study 
 
 ## Source code
 "src" folder contains customs scripts used:
-- "my_io.py" is the custom python scripts used for reading images and their info
-- "pipeline_analyis_cellseg.cpproj" is used for cell profiler for single cell segmentation 
+- "io.py" is the custom python scripts for input output function
+- "utils.py" is the custom python scripts for custom utility functions
 
-## Figures 
-"figures" folder contains generated figures for the paper
 
